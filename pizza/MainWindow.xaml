@@ -1,0 +1,130 @@
+﻿<Window x:Class="pizza.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pizza"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="ПИЦЦЕРИЯ"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0 10"/>
+
+        <GroupBox Grid.Row="1"
+                  Header="1. Выберите пиццу"
+                  Margin="0 5">
+            <StackPanel Margin="10">
+                <RadioButton Name="MargaritaRbtn"
+                             Content="Маргарита - 450 руб."
+                             IsChecked="True"
+                             Click="AnyParameter_Changed"/>
+                <RadioButton Name="PepperoniRbtn"
+                             Content="Пепперони - 550 руб."
+                             Click="AnyParameter_Changed"/>
+                <RadioButton Name="HawaiiRbtn"
+                             Content="Гавайская - 500 руб."
+                             Click="AnyParameter_Changed"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2"
+                  Header="2. Количество"
+                  Margin="0 5">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10">
+                <Button Name="MinusBtn"
+                        Content="-"
+                        Width="40"
+                        Height="35"
+                        FontSize="20"
+                        Click="MinusBtn_Click"/>
+                <TextBox Name="QuantityTB"
+                         Text="1"
+                         Width="60"
+                         Height="35"
+                         TextAlignment="Center"
+                         FontSize="16"
+                         IsReadOnly="True"/>
+                <Button Name="PlusBtn"
+                        Content="+"
+                        Width="40"
+                        Height="35"
+                        FontSize="20"
+                        Click="PlusBtn_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3"
+                  Header="3. Напиток"
+                  Margin="0 5">
+            <StackPanel Margin="10">
+                <CheckBox Name="DrinkChbx"
+                          Content="Добавить напиток"
+                          Click="DrinkChbx_Click"/>
+                <Border Margin="20 5 0 0">
+                    <StackPanel Name="DrinkPanel"
+                                IsEnabled="False">
+                        <RadioButton Name="ColaRbtn"
+                                     Content="Кола - 100 руб."
+                                     Click="AnyParameter_Changed"/>
+                        <RadioButton Name="JuiceRbtn"
+                                     Content="Сок - 80 руб."
+                                     Click="AnyParameter_Changed"/>
+                        <RadioButton Name="WaterRbtn"
+                                     Content="Вода - 50 руб."
+                                     IsChecked="True"
+                                     Click="AnyParameter_Changed"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </GroupBox>
+
+        <Border Grid.Row="4"
+                Background="Wheat"
+                BorderBrush="Red"
+                BorderThickness="2"
+                CornerRadius="8"
+                Margin="0 20">
+            <TextBlock Name="TotalTl"
+                       Text="Итого: 450 руб."
+                       FontSize="20"
+                       Foreground="Red"
+                       FontWeight="Bold"
+                       TextAlignment="Center"
+                       Padding="15"/>
+        </Border>
+
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0 20">
+            <Button Name="OrderBtn"
+                    Content="Оформить заказ"
+                    Width="140"
+                    Height="45"
+                    Margin="5"
+                    FontSize="14"
+                    Click="OrderBtn_Click"/>
+            <Button Name="ResetBtn"
+                    Content="Сбросить"
+                    Width="100"
+                    Height="45"
+                    Margin="5"
+                    FontSize="14"
+                    Click="ResetBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
