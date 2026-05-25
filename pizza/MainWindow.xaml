@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pizza"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="MainWindow" Height="850" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -68,7 +71,26 @@
         </GroupBox>
 
         <GroupBox Grid.Row="3"
-                  Header="3. Напиток"
+                  Header="3. Дополнительные ингредиенты"
+                  Margin="0 5">
+            <StackPanel Margin="10">
+                <CheckBox Name="CheeseChbx"
+                          Content="Сыр - 50 ₽"
+                          Click="AnyParameter_Changed"/>
+                <CheckBox Name="BeconChbx"
+                          Content="Бекон - 80 ₽"
+                          Click="AnyParameter_Changed"/>
+                <CheckBox Name="OliveChbx"
+                          Content="Оливки - 100 ₽"
+                          Click="AnyParameter_Changed"/>
+                <CheckBox Name="MushrumChbx"
+                          Content="Грибы - 80 ₽"
+                          Click="AnyParameter_Changed"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="4"
+                  Header="4. Напиток"
                   Margin="0 5">
             <StackPanel Margin="10">
                 <CheckBox Name="DrinkChbx"
@@ -92,22 +114,49 @@
             </StackPanel>
         </GroupBox>
 
-        <Border Grid.Row="4"
-                Background="Wheat"
-                BorderBrush="Red"
+        <GroupBox Grid.Row="5"
+                  Header="5. Доставка"
+                  Margin="0 5">
+            <StackPanel Margin="10">
+                <RadioButton Name="PickupRbt"
+                             Content="Самовывоз"
+                             Click="AnyParameter_Changed"
+                             IsChecked="True"/>
+                <RadioButton Name="DeliveryRbt"
+                             Content="Доставка - 200 ₽"
+                             Click="AnyParameter_Changed"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Border Grid.Row="6"
+                Background="Black"
+                BorderBrush="Orange"
                 BorderThickness="2"
                 CornerRadius="8"
                 Margin="0 20">
             <TextBlock Name="TotalTl"
                        Text="Итого: 450 руб."
                        FontSize="20"
-                       Foreground="Red"
+                       Foreground="Orange"
                        FontWeight="Bold"
                        TextAlignment="Center"
                        Padding="15"/>
         </Border>
 
-        <StackPanel Grid.Row="5"
+            <TextBox Name="PromoCod"
+                     Grid.Row="7"
+                     Text="Введите промокод"
+                     FontSize="20"
+                     Foreground="Orange"
+                     Background="Black"
+                     FontWeight="Bold"
+                     BorderBrush="Orange"
+                     BorderThickness="2"
+                     TextAlignment="Center"
+                     Padding="15"
+                     Width="400"/>
+
+            <StackPanel Grid.Row="8"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Margin="0 20">

@@ -23,6 +23,11 @@ namespace pizza
         private int priceCola = 100;
         private int priceJuice = 80;
         private int priceWater = 50;
+        private int priceCheese = 50;
+        private int priceBecon = 80;
+        private int priceOlive = 100;
+        private int priceMushrum = 80;
+        private int deliveryPrice = 200;
         public MainWindow()
         {
             InitializeComponent();
@@ -73,12 +78,40 @@ namespace pizza
             else
                 return "вода";
         }
+        private int GetDopIngredionPrice()
+        {
+            int price = 0;
+            if(CheeseChbx.IsChecked == true)
+                price += priceCheese;
+            if(BeconChbx.IsChecked == true)
+                price += priceBecon;
+            if(OliveChbx.IsChecked == true)
+                price += priceOlive;
+            if(MushrumChbx.IsChecked == true)
+                price += priceMushrum;
+
+            return price;
+        }
+        private int GetDeliveryPrice()
+        {
+            if (PickupRbt.IsChecked == true)
+                return 0;
+            else
+                return deliveryPrice;
+        }
         private void UpdateTotal()
         {
             int pizzaPrica = GetPizzaPrice();
             int kol = GetPizzaCount();
             int drinkPrice = GetDrinkPrice();
-            int total = (pizzaPrica * kol) + drinkPrice;
+            int dopingprice = GetDopIngredionPrice();
+            int devprice = GetDeliveryPrice();
+            int total = (pizzaPrica * kol) + drinkPrice + dopingprice + devprice;
+
+            if (total > 1000)
+            {
+                TotalTl.Foreground = Brushes.Green;
+            }
 
             TotalTl.Text = $"Итого: {total} руб.";
         }
@@ -115,7 +148,7 @@ namespace pizza
             string pizzaName = GetPizzaName();
             int kol = GetPizzaCount();
             string drinkName = GetDringName();
-            int total = (GetPizzaPrice() * kol) + GetDrinkPrice();
+            int total = (GetPizzaPrice() * kol) + GetDrinkPrice() + GetDopIngredionPrice() + GetDeliveryPrice();
 
             string message = "ВАШ ЗАКАЗ\n" +
                             $"Пицца: {pizzaName}, {kol} шт.\n" +
