@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,12 +93,44 @@ namespace pizza
 
             return price;
         }
+        private string GetDopIngredionName()
+        {
+            string cheese = null;
+            string becon = null;
+            string olive = null;
+            string mushrum = null;
+            string ingredName;
+
+            if (CheeseChbx.IsChecked == true)
+                cheese = " сыр ";
+            if (BeconChbx.IsChecked == true)
+                becon = " бекон ";
+            if (OliveChbx.IsChecked == true)
+                olive = " оливки ";
+            if (MushrumChbx.IsChecked == true)
+                mushrum = " грибы ";
+
+            if (CheeseChbx.IsChecked == false && BeconChbx.IsChecked == false && OliveChbx.IsChecked == false && MushrumChbx.IsChecked == false)
+            {
+                ingredName = "Не выбраны";
+            }
+            else 
+                ingredName = cheese + becon + olive + mushrum;
+            return ingredName.Trim();
+        }
         private int GetDeliveryPrice()
         {
             if (PickupRbt.IsChecked == true)
                 return 0;
             else
                 return deliveryPrice;
+        }
+        private string GetDeliveryName()
+        {
+            if (PickupRbt.IsChecked == true)
+                return "Самовывоз";
+            else
+                return "Доставка - 200 руб.";
         }
         private void UpdateTotal()
         {
@@ -148,11 +181,15 @@ namespace pizza
             string pizzaName = GetPizzaName();
             int kol = GetPizzaCount();
             string drinkName = GetDringName();
+            string deliveryName = GetDeliveryName();
+            string dobingedname = GetDopIngredionName();
             int total = (GetPizzaPrice() * kol) + GetDrinkPrice() + GetDopIngredionPrice() + GetDeliveryPrice();
 
             string message = "ВАШ ЗАКАЗ\n" +
                             $"Пицца: {pizzaName}, {kol} шт.\n" +
+                            $"Доп. ингредиенты: {dobingedname}\n" +
                             $"Напиток: {drinkName}\n" +
+                            $"Доставка: {deliveryName}\n" +
                             $"Сумма {total} руб.\n" +
                             $"Спасибо за заказ";
             MessageBox.Show(message, "Заказ оформлен", MessageBoxButton.OK, MessageBoxImage.Information);
