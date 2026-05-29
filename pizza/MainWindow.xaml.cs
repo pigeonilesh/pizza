@@ -29,6 +29,7 @@ namespace pizza
         private int priceOlive = 100;
         private int priceMushrum = 80;
         private int deliveryPrice = 200;
+        private int discount = 20;
         public MainWindow()
         {
             InitializeComponent();
@@ -206,7 +207,17 @@ namespace pizza
             DrinkChbx.IsChecked = false;
             WaterRbtn.IsChecked = true;
             DrinkPanel.IsEnabled = false;
+            PickupRbt.IsChecked = true;
+            CheeseChbx.IsChecked = false;
+            BeconChbx.IsChecked = false;
+            OliveChbx.IsChecked = false;
+            MushrumChbx.IsChecked = false;
             UpdateTotal();
+        }
+
+        private void CheckPromoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
